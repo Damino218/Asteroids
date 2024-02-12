@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float rotationSpeed = 100f;
-    // Start is called before the first frame update
-    void Start()
+	public float flySpeed = 100f;
+	// Start is called before the first frame update
+	void Start()
     {
         
     }
@@ -23,11 +24,13 @@ public class playerController : MonoBehaviour
 
         //sterowanie prêdkoœci¹
         //stwórz nowy wektor przesuniêcia o wartoœæ 1 do przodu
-        Vector3 movement = Vector3.forward;
+        Vector3 movement = transform.forward;
         //pomnó¿ go przez czas do ostatniej klatki
         movement *= Time.deltaTime;
         //pomnó¿ go przez "Wychylenie joystika"
         movement *= Input.GetAxis("Vertical");
+        //pomnó¿ przez prêdkoœæ lotu
+        movement *= flySpeed;
         //dodaj ruch do obiektu
         transform.position += movement;
 
