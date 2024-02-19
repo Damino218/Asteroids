@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float rotationSpeed = 100f;
-	public float flySpeed = 100f;
+	public float flySpeed = 5f;
 	// Start is called before the first frame update
 	void Start()
     {
