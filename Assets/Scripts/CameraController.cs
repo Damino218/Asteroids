@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //oblicz docelow¹ pozycjê kamery
         Vector3 targetPosition = player.position + Vector3.up * CameraHeight;
