@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed938a4f73d16d546a116c9d91656ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraHeight: 7.5
+  CameraHeight: 15
 --- !u!1 &1025739268
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1025739270}
   - component: {fileID: 1025739269}
+  - component: {fileID: 1025739271}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -363,6 +364,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1025739271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025739268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d758d23bf3504a4f9293013bd0e9c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelExitDistance: 100
+  exitPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &1413031035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,6 +386,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1439181624548517849, guid: 35f8af9c7d9371e40b4e962578e07b68, type: 3}
+      propertyPath: m_Drag
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3415560240597699957, guid: 35f8af9c7d9371e40b4e962578e07b68, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.53
@@ -381,7 +400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3415560240597699957, guid: 35f8af9c7d9371e40b4e962578e07b68, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.69
+      value: 5.605
       objectReference: {fileID: 0}
     - target: {fileID: 3415560240597699957, guid: 35f8af9c7d9371e40b4e962578e07b68, type: 3}
       propertyPath: m_LocalRotation.w

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,9 @@ public class PlayerController : MonoBehaviour
 	public float flySpeed = 5f;
 	//odniesienie do menedzera poziomu
 	GameObject levelManagerObject;
+    //stan os³on w procentach
+    float shieldCapacity = 1;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -66,7 +70,10 @@ public class PlayerController : MonoBehaviour
         Vector3 target = levelManagerObject.GetComponent<LevelManager>().exitPosition;
         //obróæ znacznik w stronê wyjœcia
         transform.Find("NavUI").Find("TargetMarker").LookAt(target);
-    }
+        //zmieñ iloœæ procentowo widoczn¹ w interfejsie
+        TextMeshPro shieldText = GameObject.Find("Canvas").transform.Find("ShieldCapacityText").GetComponent<TextMeshPro>();
+        shieldText.text = " Shield: " + shieldCapacity.ToString() + "%";
+	}
 
     private void OnCollisionEnter(Collision collision)
 	{
@@ -75,9 +82,12 @@ public class PlayerController : MonoBehaviour
         //sprawdŸ czy dotknêliœmy asteroidy
         if (collision.collider.transform.CompareTag("Asteroid"))
         {
-            Debug.Log("Boom!");
-			//pauza
-			Time.timeScale = 0;
+            //transform asteroidy
+            Transform asteroid = collision.collider.transform;
+            //policz wektor wed³ug którego odebchniemy asteroidê
+            Vector3 shieldForce = asteroid.position - transform.position;
+            //popchnij asteroidê
+            asteroid.GetComponent<Rigidbody>().AddForce(shieldForce, ForceMode.VelocityChange);
         }
 	}
 
