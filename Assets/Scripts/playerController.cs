@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public float rotationSpeed = 100f;
 	public float flySpeed = 5f;
+	//odniesienie do menedzera poziomu
+	GameObject levelManagerObject;
 	// Start is called before the first frame update
 	void Start()
     {
-        
+		levelManagerObject = GameObject.Find("LevelManager");
     }
 
     // Update is called once per frame
@@ -54,9 +56,19 @@ public class PlayerController : MonoBehaviour
         //nie mo¿emy u¿yæ += poniewa¿ unity u¿ywa Quaternionów do zapisu rotacji
         transform.Rotate(rotation);
 
+		UpdateUI();
+
     }
 
-	private void OnCollisionEnter(Collision collision)
+	private void UpdateUI()
+    {
+        //metoda wykonuje wszystko zwi¹zane z aktualizacj¹ interfejsu u¿ytkownika
+        Vector3 target = levelManagerObject.GetComponent<LevelManager>().exitPosition;
+        //obróæ znacznik w stronê wyjœcia
+        transform.Find("NavUI").Find("TargetMarker").LookAt(target);
+    }
+
+    private void OnCollisionEnter(Collision collision)
 	{
         //uruchamia siê automatycznie jeœli zetkniemy siê z i innym coliderem
 
@@ -64,8 +76,8 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.transform.CompareTag("Asteroid"))
         {
             Debug.Log("Boom!");
-            //pauza
-            Time.timeScale = 0;
+			//pauza
+			Time.timeScale = 0;
         }
 	}
 
