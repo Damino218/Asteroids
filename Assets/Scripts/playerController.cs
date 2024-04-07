@@ -62,11 +62,13 @@ public class PlayerController : MonoBehaviour
 
 		UpdateUI();
 
-    }
-
+	}
+        
 	private void UpdateUI()
     {
         //metoda wykonuje wszystko zwi¹zane z aktualizacj¹ interfejsu u¿ytkownika
+
+        //wyci¹gnij z menadzera poziomu pozycjê wyjœcia
         Vector3 target = levelManagerObject.GetComponent<LevelManager>().exitPosition;
         //obróæ znacznik w stronê wyjœcia
         transform.Find("NavUI").Find("TargetMarker").LookAt(target);
