@@ -73,8 +73,9 @@ public class PlayerController : MonoBehaviour
         //obróæ znacznik w stronê wyjœcia
         transform.Find("NavUI").Find("TargetMarker").LookAt(target);
         //zmieñ iloœæ procentowo widoczn¹ w interfejsie
-        TextMeshPro shieldText = GameObject.Find("Canvas").transform.Find("ShieldCapacityText").GetComponent<TextMeshPro>();
-        shieldText.text = " Shield: " + shieldCapacity.ToString() + "%";
+        TextMeshProUGUI shieldText =
+            GameObject.Find("Canvas").transform.Find("ShieldCapacityText").GetComponent<TextMeshProUGUI>();
+        shieldText.text = " Shield: " + (shieldCapacity*100).ToString() + "%";
 	}
 
     private void OnCollisionEnter(Collision collision)
