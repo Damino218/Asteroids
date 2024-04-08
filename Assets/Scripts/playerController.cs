@@ -123,8 +123,8 @@ public class PlayerController : MonoBehaviour
 		//¿e poziom jest ukoñczony
 		if (other.transform.CompareTag("LevelExit"))
 		{
-			//z obiektu LevelManager wyci¹gnij skrypt LevelManager i ustaw flagê
-			levelManagerObject.GetComponent<LevelManager>().levelComplete = true;
+			//wywo³aj dla LevelManager metodê zakoñczenia poziomu
+			levelManagerObject.GetComponent<LevelManager>().OnSuccess();
 		}
 	}
 }

@@ -28,11 +28,30 @@ public class LevelManager : MonoBehaviour
         //podstawiamy: x=x, y=0, z=y
         exitPosition = new Vector3(spawnCircle.x, 0, spawnCircle.y);
         Instantiate(exitPrefab, exitPosition, Quaternion.identity);
+
+        //wystartuj czas
+        Time.timeScale = 1f;
     }
 
 	// Update is called once per frame
 	void Update()
     {
         
+    }
+    //funkcja jest uruchamiana kiedy dany poziom (level) jest zakończony sukcesem
+    public void OnSuccess()
+    {
+        //zatrzymaj fizykę gry
+        Time.timeScale = 0f;
+        //ustaw flagę - poziom zakończony
+        levelComplete = true;
+        //odegraj dźwięk końca poziomu
+        Camera.main.transform.Find("LevelCompleteSound").GetComponent<AudioSource>().Play();
+    }
+    public void OnFailure()
+    {
+        Time.timeScale = 0f;
+        levelFailed = true;
+        Camera.main.transform.Find("GameOverSound").GetComponent<AudioSource>().Play();
     }
 }
