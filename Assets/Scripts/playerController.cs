@@ -81,6 +81,12 @@ public class PlayerController : MonoBehaviour
 			//znajdz canvas (interfejs), znajdz w nim ekran konca poziomu i go w³¹cz
 			GameObject.Find("Canvas").transform.Find("LevelCompleteScreen").gameObject.SetActive(true);
 		}
+		//sprawdzamy czy poziom siê zakoñczy³ i czy musimy wyœwietliæ ekran koñcowy
+		if (levelManagerObject.GetComponent<LevelManager>().levelComplete)
+		{
+			//znajdz canvas (interfejs), znajdz w nim ekran konca poziomu i go w³¹cz
+			GameObject.Find("Canvas").transform.Find("GameOverScreen").gameObject.SetActive(true);
+		}
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -97,6 +103,11 @@ public class PlayerController : MonoBehaviour
 			//popchnij asteroide
 			asteroid.GetComponent<Rigidbody>().AddForce(shieldForce * 5, ForceMode.Impulse);
 			shieldCapacity -= 0.25f;
+			if(shieldCapacity < 0)
+			{
+				//poinformuj level manager, ¿e gra siê skoñczy³a
+				levelManagerObject.GetComponent<LevelManager>().levelFailed = true;
+			}
 		}
 	}
 
