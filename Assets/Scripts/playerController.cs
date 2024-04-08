@@ -82,10 +82,16 @@ public class PlayerController : MonoBehaviour
 			GameObject.Find("Canvas").transform.Find("LevelCompleteScreen").gameObject.SetActive(true);
 		}
 		//sprawdzamy czy poziom siê zakoñczy³ i czy musimy wyœwietliæ ekran koñcowy
-		if (levelManagerObject.GetComponent<LevelManager>().levelComplete)
+		if (levelManagerObject.GetComponent<LevelManager>().levelFailed)
 		{
-			//znajdz canvas (interfejs), znajdz w nim ekran konca poziomu i go w³¹cz
-			GameObject.Find("Canvas").transform.Find("GameOverScreen").gameObject.SetActive(true);
+			//znajdz canvas (interfejs), znajdz w nim ekran konca poziomu i go w³¹cz, oraz opó¿nij go
+			transform.Find("explosion_effect").gameObject.SetActive(true);
+			transform.Find("Model").gameObject.SetActive(false);
+			this.Wait(2f, () =>
+			{
+				GameObject.Find("Canvas").transform.Find("GameOverScreen").gameObject.SetActive(true);
+			});
+			
 		}
 	}
 
