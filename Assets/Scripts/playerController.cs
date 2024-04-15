@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
 			//znajdz canvas (interfejs), znajdz w nim ekran konca poziomu i go w³¹cz, oraz opó¿nij go
 			transform.Find("explosion_effect").gameObject.SetActive(true);
 			transform.Find("Model").gameObject.SetActive(false);
+			transform.Find("NavUI").transform.Find("TargetMarker").transform.Find("Sphere").gameObject.SetActive(false);
 			this.Wait(2f, () =>
 			{
 				GameObject.Find("Canvas").transform.Find("GameOverScreen").gameObject.SetActive(true);
