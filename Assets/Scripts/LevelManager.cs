@@ -45,8 +45,6 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0f;
         //ustaw flagę - poziom zakończony
         levelComplete = true;
-        //zatrzymaj ambientową muzykę
-        Camera.main.transform.GetComponent<AudioSource>().Stop();
         //odegraj dźwięk końca poziomu
         Camera.main.transform.Find("LevelCompleteSound").GetComponent<AudioSource>().Play();
     }
