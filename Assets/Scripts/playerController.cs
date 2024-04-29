@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
 			//policz wektor wed³ug którego odepchniemy asteroide
 			Vector3 shieldForce = asteroid.position - transform.position;
 			//popchnij asteroide
-			asteroid.GetComponent<Rigidbody>().AddForce(shieldForce * 5, ForceMode.Impulse);
+			asteroid.GetComponent<Rigidbody>().AddForce(shieldForce * 5, ForceMode.VelocityChange);
 			shieldCapacity -= 0.25f;
 			if(shieldCapacity < 0)
 			{

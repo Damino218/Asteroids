@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed938a4f73d16d546a116c9d91656ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraHeight: 15
+  CameraHeight: 5
   dampSpeed: 0.25
 --- !u!45 &963194230
 Skybox:
@@ -888,6 +888,7 @@ GameObject:
   - component: {fileID: 1025739270}
   - component: {fileID: 1025739269}
   - component: {fileID: 1025739271}
+  - component: {fileID: 1025739272}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -910,6 +911,7 @@ MonoBehaviour:
   staticAsteroid: {fileID: 3111949983966120364, guid: 5d23d3a7c73289a4f963d02bf719a39a, type: 3}
   spawnDistance: 10
   safeDistance: 5
+  cooldown: 0
 --- !u!4 &1025739270
 Transform:
   m_ObjectHideFlags: 0
@@ -942,6 +944,22 @@ MonoBehaviour:
   exitPrefab: {fileID: 2138259829323932846, guid: 72d55f327534c4b45ba9ffa807f9135e, type: 3}
   levelComplete: 0
   levelFailed: 0
+--- !u!114 &1025739272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025739268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2553aea9daa6e43969d8db3c43cd91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staticAsteroid: {fileID: 3169654197137164082, guid: 0a894888932e10449a3bbb453fed0feb, type: 3}
+  spawnDistance: 20
+  safeDistance: 5
+  cooldown: 10
 --- !u!1 &1030842708
 GameObject:
   m_ObjectHideFlags: 0
